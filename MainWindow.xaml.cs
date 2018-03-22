@@ -54,12 +54,26 @@ namespace HelloWorld
 
         private void EnterPassword(object sender, RoutedEventArgs e)
         {
-            uxSubmit.IsEnabled = true;
+            if (uxPassword.Text.Length > 0)
+            {
+                uxSubmit.IsEnabled = true;
+            }
+            else
+                uxSubmit.IsEnabled = false;
+
         }
 
         private void EnterName(Object sender, RoutedEventArgs e)
         {
-            uxSubmit.IsEnabled = true;
+            if (uxName.Text.Length > 0)
+            {
+                uxSubmit.IsEnabled = true;
+            }
+            else
+                uxSubmit.IsEnabled = false;
         }
+
+
+
     }
 }

@@ -13,44 +13,57 @@
 
         <!--<TextBlock Background="AliceBlue">Enter Name:</TextBlock>
         <TextBox x:Name="uxName"></TextBox>-->
-        
-        
-        <TextBlock>Enter Name:</TextBlock>
+
+
+
+
+        <!---->
+            <TextBlock>Enter Name:</TextBlock>
         <TextBox x:Name="uxName" 
         Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, 
-            ValidatesOnDataErrors=True}" Background="Beige" Height="50">
+            ValidatesOnDataErrors=True}" Background="Beige" Height="50">   
         </TextBox>
+        
+        
         <Label x:Name="uxNameError" 
             Content="{Binding NameError, UpdateSourceTrigger=PropertyChanged}"
-               Background="Azure" Height="50"></Label>
+               Background="Azure" Height="50">
+        </Label>
 
+        
+        
+        
         <TextBlock>Enter Password:</TextBlock>
         <TextBox x:Name="uxPassword"
                  Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, 
-            ValidatesOnDataErrors=True}" Background="Beige" Height="50">
+            ValidatesOnDataErrors=True}" Background="Beige" Height="50" >   
         </TextBox>
+        
         <Label x:Name="uxPasswordError" 
             Content="{Binding PasswordError, UpdateSourceTrigger=PropertyChanged}"
-               Background="Azure" Height="50"></Label>
+               Background="Azure" Height="50">
+        </Label>
 
 
-        <Button x:Name="uxSubmit" Click="uxSubmit_click" FontWeight="Bold">Submit</Button>
-
-
-
-        <Button>
-            <StackPanel Orientation="Horizontal">
-                <!--<Image Source="images/ic_thumb_up_black_24dp_2x.png" />-->
-                <TextBlock Margin="15,0,0,0" VerticalAlignment="Center"  Text= "Thumbsup" />
-            </StackPanel>
+        <Button x:Name="uxSubmit" 
+                Click="uxSubmit_click" IsEnabled =" False" FontWeight="Bold">Submit 
         </Button>
-
-        <Button Height="100" Width="200">
-            <CheckBox>CheckMe</CheckBox>
-        </Button>
-
-
-
+        <!---->
+        <StackPanel>
+            <TextBox x:Name="TheTextBox" />
+            <Button Content="Submit">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=TheTextBox}" Value="">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
 
     </StackPanel>
 </Window>
